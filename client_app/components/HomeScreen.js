@@ -22,6 +22,14 @@ export default class HomeScreen extends Component {
         })
     }
 
+    renderContacts = ({contact}) => {
+        return(
+            <View>
+              <Text style={styles.listItem}>{contact.first_name}</Text>
+            </View>
+          );
+    }
+
     filterContacts = () => {
         if(this.state.searchInput != ''){
             return this.state.contactData.filter(contact => contact.first_name.toLocaleLowerCase().includes(this.state.searchInput.toLocaleLowerCase()));
