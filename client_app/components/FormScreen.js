@@ -39,9 +39,32 @@ export default class FormScreen extends Component {
     }
     render() {
         return (
+        <View>
             <View>
-                <Text> textInComponent </Text>
+                <TextInput placeholder="First Name" onChangeText={value => this.setState({first_name: value})}/>
             </View>
+            <View>
+                <TextInput placeholder="Last Name"  onChangeText={value => this.setState({last_name: value})}/>
+            </View>
+            <View>
+                <TextInput placeholder="Email"      onChangeText={value => this.setState({email: value})}/>
+            </View>
+            <View>
+                <TextInput placeholder="Phone"      onChangeText={value => this.setState({phone: value})}/>
+            </View>
+            <View>
+                <TextInput placeholder="Address"    onChangeText={value => this.setState({address: value})}/>
+            </View>
+            <View>
+                <TextInput placeholder="City"       onChangeText={value => this.setState({city: value})}/>
+            </View>
+            <View>
+                <TextInput placeholder="Country"    onChangeText={value => this.setState({country: value})}/>
+            </View>
+            <View>
+                <Button onPress={this.addContact} title="Add Contact"/>
+            </View>
+        </View>
         )
     }
 }
