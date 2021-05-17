@@ -57,7 +57,7 @@ export default class HomeScreen extends Component {
                     <Button title="Form" />
                 </View>
                 <View>
-                    <Button title="Sort" />
+                    <Button title="Sort" onPress={() => this.sortByAlphabeticall()}/>
                 </View>
                 <FlatList 
                     data={this.filterContacts()}
