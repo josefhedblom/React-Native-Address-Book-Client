@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, Button, FlatList, StyleSheet } from 'react-native'
+import { TextInput, View, Button, FlatList, StyleSheet, Text } from 'react-native'
 import axios from 'axios';
 import {API_URL} from '@env'
 
@@ -23,17 +23,17 @@ export default class HomeScreen extends Component {
         })
     }
 
-    renderContacts = ({contact}) => {
+    renderContacts = ({item}) => {
         return(
             <View>
-              <Text style={styles.listItem}>{contact.first_name}</Text>
+              <Text style={styles.listItem}>{item.first_name}</Text>
             </View>
           );
     }
 
     filterContacts = () => {
         if(this.state.searchInput != ''){
-            return this.state.contactData.filter(contact => contact.first_name.toLocaleLowerCase().includes(this.state.searchInput.toLocaleLowerCase()));
+            return this.state.contactData.filter(item => item.first_name.toLocaleLowerCase().includes(this.state.searchInput.toLocaleLowerCase()));
         } else {
             return this.state.contactData
         }
@@ -63,7 +63,7 @@ export default class HomeScreen extends Component {
                 <FlatList 
                     data={this.filterContacts()}
                     renderItem={this.renderContacts}
-                    keyExtractor={contact => contact._id.toString()}
+                    keyExtractor={item => item._id.toString()}
                 />
             </View>
         )
