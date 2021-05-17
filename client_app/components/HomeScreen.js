@@ -51,7 +51,7 @@ export default class HomeScreen extends Component {
         return (
             <View>
                 <View>
-                    <TextInput placeholder="Serach"/>
+                    <TextInput placeholder="Serach" onChangeText={value => this.setState({searchInput: value})}/>
                 </View>
                 <View>
                     <Button title="Form" />
