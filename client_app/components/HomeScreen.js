@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, Button, FlatList } from 'react-native'
+import { TextInput, View, Button, FlatList, StyleSheet } from 'react-native'
 import axios from 'axios';
 
 export default class HomeScreen extends Component {
@@ -68,3 +68,5 @@ export default class HomeScreen extends Component {
         )
     }
 };
+
+const styles = StyleSheet.create({})
