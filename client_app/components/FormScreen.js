@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { StyleSheet, View, TextInput, Button } from 'react-native'
 import axios from 'axios';
 import {API_URL} from '@env'
 
