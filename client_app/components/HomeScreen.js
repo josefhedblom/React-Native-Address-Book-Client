@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, Button } from 'react-native'
+import { TextInput, View, Button, FlatList } from 'react-native'
 import axios from 'axios';
 
 export default class HomeScreen extends Component {
@@ -51,6 +51,11 @@ export default class HomeScreen extends Component {
                 <View>
                     <Button title="Sort" />
                 </View>
+                <FlatList 
+                    data={this.filterContacts()}
+                    renderItem={this.renderContacts}
+                    keyExtractor={contact => contact._id.toString()}
+                />
             </View>
         )
     }
