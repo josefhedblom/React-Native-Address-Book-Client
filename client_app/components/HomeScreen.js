@@ -49,9 +49,9 @@ export default class HomeScreen extends Component {
     }
     render() {
         return (
-            <View>
-                <View>
-                    <TextInput placeholder="Serach" onChangeText={value => this.setState({searchInput: value})}/>
+            <View style={styles.container}>
+                <View style={{marginBottom:20}}>
+                    <TextInput style={styles.searchInput} placeholder="Serach" onChangeText={value => this.setState({searchInput: value})}/>
                 </View>
                 <View>
                     <Button title="Form" />
@@ -69,4 +69,22 @@ export default class HomeScreen extends Component {
     }
 };
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 100
+    },
+      listItem: {
+        backgroundColor: 'pink',
+        width: 300,
+        padding: 20,
+        margin: 10,
+        fontSize:20
+      },
+      searchInput: {
+        fontSize: 16
+      }
+
+})
