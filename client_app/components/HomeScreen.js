@@ -55,7 +55,7 @@ export default class HomeScreen extends Component {
                     <TextInput style={styles.searchInput} placeholder="Serach" onChangeText={value => this.setState({searchInput: value})}/>
                 </View>
                 <View>
-                    <Button title="Form" />
+                    <Button title="Form" onPress={() => this.props.navigation.navigate('Form')} />
                 </View>
                 <View>
                     <Button title="Sort" onPress={() => this.sortByAlphabeticall()}/>
