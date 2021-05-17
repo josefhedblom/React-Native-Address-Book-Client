@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { TextInput, View, Button, FlatList, StyleSheet } from 'react-native'
 import axios from 'axios';
+import {API_URL} from '@env'
 
 export default class HomeScreen extends Component {
     constructor(props){
@@ -13,7 +14,7 @@ export default class HomeScreen extends Component {
     }
 
     componentDidMount(){
-        axios.get("http://000.000.0.00:5000") /* ADD IP-ADDRESS TO ENV FILE */
+        axios.get(`${API_URL}`)
         .then(response => {
             this.setState({contactData: response.data});
         })
