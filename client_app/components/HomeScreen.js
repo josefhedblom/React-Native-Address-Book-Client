@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { TextInput, View, Button } from 'react-native'
 import axios from 'axios';
 
 export default class HomeScreen extends Component {
@@ -42,8 +42,16 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View>
-                <Text> HomeScreen </Text>
+                <View>
+                    <TextInput placeholder="Serach"/>
+                </View>
+                <View>
+                    <Button title="Form" />
+                </View>
+                <View>
+                    <Button title="Sort" />
+                </View>
             </View>
         )
     }
-}
+};
