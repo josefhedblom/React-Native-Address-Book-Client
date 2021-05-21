@@ -28,7 +28,7 @@ export default function FormScreen({ route, navigation }) {
         return userData.map((field, index) =>{
             if(`${field}` != '_id' && `${field}` != 'profile_img' && `${field}` != '__v' ){
                 return(
-                    <View key={index}>
+                    <View key={index} style={styles.inputTextField}>
                         <TextInput
                             placeholder={`${field}`} 
                             onChangeText={(value) => state[field] = value}
@@ -43,8 +43,8 @@ export default function FormScreen({ route, navigation }) {
     return (
         <SafeAreaView>
             <ScrollView>
-            <View>
-                <View>
+            <View style={styles.container}>
+                <View style={styles.inputField}>
                     {contactForm()}
                     <Button onPress={() => {addContact();}} title="Add Contact"/>
                 </View>
@@ -64,6 +64,14 @@ const styles = StyleSheet.create({
       width: 300,
       padding: 20,
       margin: 10,
-      fontSize:20
+      fontSize:20,
+    },
+    inputTextField: {
+      width: '90%',
+      padding: 20,
+      margin: 10,
+      fontSize:20,
+      backgroundColor:'white',
+      borderRadius:5
     }
 });
