@@ -16,13 +16,21 @@ export default class HomeScreen extends Component {
     }
 
     componentDidMount(){
+        this.getData();
+    }
+
+    getData = () => {
+        this.setState({isLoading: true});
         axios.get(`${API_URL}`)
-        .then(response => {
-            this.setState({contactData: response.data});
+        .then(data => {
+          this.setState({contactData: data.data.contacts}),
+          this.setState({formFields: Object.keys(Object.assign({}, ...data.data.contacts))})
+          this.setState({isLoading: false});
         })
         .catch(error => {
-            console.log(error.message);
+          console.log(error.message);
         })
+
     }
 
     renderContacts = ({item}) => {
