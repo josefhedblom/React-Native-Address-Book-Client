@@ -1,14 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'recat';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { API_URL } from '@env';
 
-export default function ProfileScreen() {
-
+export default function ProfileScreen({ route }) {
+    const { contactId } = route.params;
     const [contactData, setContactData] = useState([]);
 
     useEffect(() => {
-        fetch(`${API_URL}/${itemId}`)
+        fetch(`${API_URL}/${contactId}`)
         .then(response => response.json())
         .then(data => setContactData(data.user))
         .catch(error => console.log(error.message))
