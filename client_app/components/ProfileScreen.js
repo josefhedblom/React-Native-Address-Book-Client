@@ -14,6 +14,17 @@ export default function ProfileScreen() {
         .catch(error => console.log(error.message))
     }, [])
 
+    function contactHeader(){
+        return (
+            <React.Fragment>
+                <View>
+                    {/* Avatar */}
+                </View>
+                {/* Card title Card divider */}
+            </React.Fragment>
+        )
+    }
+
     return (
         <View>
             <Text></Text>
