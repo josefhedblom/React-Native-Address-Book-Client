@@ -1,7 +1,8 @@
-import React from 'react'
-import { StyleSheet, View, TextInput, Button, SafeAreaView, ScrollView} from 'react-native'
+import React from 'react';
+import { StyleSheet, View, TextInput, Button, SafeAreaView, ScrollView} from 'react-native';
 import axios from 'axios';
-import {API_URL} from '@env'
+import {API_URL} from '@env';
+import '../helpers/StingHelper';
 
 export default function FormScreen({ route, navigation }) {
     const { userData } = route.params;
@@ -36,7 +37,7 @@ export default function FormScreen({ route, navigation }) {
                 return(
                     <View key={index} style={styles.inputTextField}>
                         <TextInput
-                            placeholder={`${field}`} 
+                            placeholder={`${field.titleize()}`} 
                             onChangeText={(value) => state[field] = value}
                         />
                     </View>
