@@ -3,6 +3,7 @@ import { useEffect, useState } from 'recat';
 import { View, StyleSheet } from 'react-native';
 import { ListItem, Avatar, Card  } from 'react-native-elements';
 import { API_URL } from '@env';
+import '../helpers/StingHelper';
 
 export default function ProfileScreen({ route }) {
     const { contactId } = route.params;
@@ -34,7 +35,7 @@ export default function ProfileScreen({ route }) {
                     <React.Fragment key={index}>
                         <ListItem style={styles.profile}>
                             <ListItem.Content >
-                              <ListItem.Title>{field}: {contactData[`${field}`]}</ListItem.Title>
+                              <ListItem.Title>{field.titleize()}: {contactData[`${field}`]}</ListItem.Title>
                             </ListItem.Content>
                         </ListItem>
                         <Card.Divider/>
