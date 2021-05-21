@@ -49,15 +49,23 @@ export default class HomeScreen extends Component {
         }
     }
 
-    sortByAlphabeticall = () => {
+    sortContactsByNameAscending = () =>{
+        this.state.contactData.sort((a, b) =>  a.first_name.localeCompare(b.first_name))
+        this.setState({sortListBoolean: false})
+      }
+    
+      sortContactsByNameDescending = () =>{
+        this.state.contactData.sort((a, b) =>  b.first_name.localeCompare(a.first_name))
+        this.setState({sortListBoolean: true})
+      }
+
+      sortByAlphabeticall = () => {
         if(this.state.sortListBoolean){
-          this.state.contactData.sort((a, b) =>  a.first_name.localeCompare(b.first_name))
-          this.setState({sortListBoolean: false})
+          this.sortContactsByNameAscending()
         } else {
-          this.state.contactData.sort((a, b) =>  b.first_name.localeCompare(a.first_name))
-          this.setState({sortListBoolean: true})
+          this.sortContactsByNameDescending()
         }
-    }
+      }
     render() {
         return (
             <View style={styles.container}>
