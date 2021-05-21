@@ -17,7 +17,7 @@ export default function ProfileScreen() {
     function contactHeader(){
         return (
             <React.Fragment>
-                <View>
+                <View style={styles.contact_header}>
                     {/* Avatar */}
                 </View>
                 {/* Card title Card divider */}
@@ -30,7 +30,7 @@ export default function ProfileScreen() {
             if(`${field}` != '_id' && `${field}` != 'profile_img' && `${field}` != '__v'){
                 return(
                     <React.Fragment key={index}>
-                        <ListItem>
+                        <ListItem style={styles.profile}>
                             <ListItem.Content >
                               <ListItem.Title>{field}: {contactData[`${field}`]}</ListItem.Title>
                             </ListItem.Content>
@@ -44,9 +44,28 @@ export default function ProfileScreen() {
 
     return (
         <ScrollView>
-            <View>
+            <View style={styles.main}>
               {/* Card with contactHeader and contactBody */}
             </View>
       </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    main: {
+        flex: 1, 
+        height: '100%', 
+        marginBottom:50, 
+        marginTop: 10
+    },
+    profile: {
+        margin: 5,
+    },
+    contact_header: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        marginTop: 10,
+        marginBottom: 30
+    }
+})
