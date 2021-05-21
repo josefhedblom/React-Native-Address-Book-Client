@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'recat';
+import { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ListItem, Avatar, Card  } from 'react-native-elements';
 import { API_URL } from '@env';

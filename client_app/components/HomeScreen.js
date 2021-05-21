@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, FlatList, StyleSheet, Text } from 'react-native'
+import { TextInput, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native'
 import { ListItem, Avatar, Header, SearchBar, Button } from 'react-native-elements'
 import axios from 'axios';
 import {API_URL} from '@env'
@@ -99,7 +99,7 @@ export default class HomeScreen extends Component {
                   value={this.state.searchItem}
               />
               <FlatList 
-                  data={this.filteredData()} 
+                  data={this.filterContacts()} 
                   renderItem={this.renderContacts}  
                   keyExtractor={item => item._id.toString()}
                   refreshing={this.state.isLoading}
@@ -114,19 +114,12 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: 100
     },
-      listItem: {
-        backgroundColor: 'pink',
-        width: 300,
-        padding: 20,
-        margin: 10,
-        fontSize:20
-      },
-      searchInput: {
-        fontSize: 16
-      }
+    searchInput: {
+      fontSize: 16
+    },
+    buttonStyle: {
+      flex:1
+    }
 
 })
