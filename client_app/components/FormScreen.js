@@ -22,6 +22,12 @@ export default function FormScreen({ route, navigation }) {
             if(response.status === 200) console.log('response', response)
         })
         .catch(error => console.log(error.message))
+
+        goHome();
+    }
+
+    function goHome(){
+        navigation.navigate('Home');
     }
 
     function contactForm(){
