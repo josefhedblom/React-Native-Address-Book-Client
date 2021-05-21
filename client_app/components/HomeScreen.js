@@ -36,7 +36,7 @@ export default class HomeScreen extends Component {
 
     renderContacts = ({item}) => {
         return(
-            <ListItem bottomDivider onPress={() => this.props.navigation.navigate('Contact', {itemId:item._id})}>
+            <ListItem bottomDivider onPress={() => this.props.navigation.navigate('Profile', {contactId:item._id})}>
             <Avatar rounded source={{uri: item.profile_img || null}} />
             <ListItem.Content>
               <ListItem.Title>{item.first_name}</ListItem.Title>
