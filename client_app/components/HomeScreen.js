@@ -97,8 +97,8 @@ export default class HomeScreen extends Component {
                   placeholder="Type Here..."
                   lightTheme={true}
                   round={true}
-                  onChangeText={value => this.setState({searchItem: value})}
-                  value={this.state.searchItem}
+                  onChangeText={value => this.setState({searchInput: value})}
+                  value={this.state.searchInput}
               />
               <FlatList 
                   data={this.filterContacts()} 
