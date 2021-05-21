@@ -8,8 +8,10 @@ export default class HomeScreen extends Component {
         super(props);
         this.state = {
             contactData: [],
+            formFields: [],
             searchInput: '',
             sortListBoolean: false,
+            isLoading: false,
         }
     }
 
