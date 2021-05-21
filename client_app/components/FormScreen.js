@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { StyleSheet, View, TextInput, Button } from 'react-native'
+import React from 'react'
+import { StyleSheet, View, TextInput, Button, SafeAreaView, ScrollView} from 'react-native'
 import axios from 'axios';
 import {API_URL} from '@env'
 
-export default function FormScreen() {
+export default function FormScreen({ route, navigation }) {
+    const { userData } = route.params;
     const state = {
         first_name: '',
         last_name: '', 
@@ -18,42 +19,38 @@ export default function FormScreen() {
     function addContact(){
         axios.post(`${API_URL}/add`,state)
         .then(response => {
-            if(response.status === 200) {
-                console.log('response', response);
+            if(response.status === 200) console.log('response', response)
+        })
+        .catch(error => console.log(error.message))
+    }
+
+    function contactForm(){
+        return userData.map((field, index) =>{
+            if(`${field}` != '_id' && `${field}` != 'profile_img' && `${field}` != '__v' ){
+                return(
+                    <View key={index}>
+                        <TextInput
+                            placeholder={`${field}`} 
+                            onChangeText={(value) => state[field] = value}
+                        />
+                    </View>
+                )
             }
         })
-        .catch(error => {
-            console.log(error.message);
-        })
+
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.inputField}>
-                <TextInput placeholder="First Name" onChangeText={value => this.setState({first_name: value})}/>
+        <SafeAreaView>
+            <ScrollView>
+            <View>
+                <View>
+                    {contactForm()}
+                    <Button onPress={() => {addContact();}} title="Add Contact"/>
+                </View>
             </View>
-            <View style={styles.inputField}>
-                <TextInput placeholder="Last Name"  onChangeText={value => this.setState({last_name: value})}/>
-            </View>
-            <View style={styles.inputField}>
-                <TextInput placeholder="Email"      onChangeText={value => this.setState({email: value})}/>
-            </View>
-            <View style={styles.inputField}>
-                <TextInput placeholder="Phone"      onChangeText={value => this.setState({phone: value})}/>
-            </View>
-            <View style={styles.inputField}>
-                <TextInput placeholder="Address"    onChangeText={value => this.setState({address: value})}/>
-            </View>
-            <View style={styles.inputField}>
-                <TextInput placeholder="City"       onChangeText={value => this.setState({city: value})}/>
-            </View>
-            <View style={styles.inputField}>
-                <TextInput placeholder="Country"    onChangeText={value => this.setState({country: value})}/>
-            </View>
-            <View style={styles.inputField}>
-                <Button onPress={this.addContact} title="Add Contact"/>
-            </View>
-        </View>
+            </ScrollView>
+        </SafeAreaView>
         )
 }
 
