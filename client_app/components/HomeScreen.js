@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, Button, FlatList, StyleSheet, Text } from 'react-native'
+import { TextInput, View, FlatList, StyleSheet, Text } from 'react-native'
 import { ListItem, Avatar, Header, SearchBar, Button } from 'react-native-elements'
 import axios from 'axios';
 import {API_URL} from '@env'
