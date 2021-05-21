@@ -43,8 +43,10 @@ export default function ProfileScreen() {
     }
 
     return (
-        <View>
-            <Text></Text>
-        </View>
+        <ScrollView>
+            <View>
+              {/* Card with contactHeader and contactBody */}
+            </View>
+      </ScrollView>
     )
 }
