@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'recat';
 import { View, StyleSheet } from 'react-native';
+import { ListItem, Avatar, Card  } from 'react-native-elements';
 import { API_URL } from '@env';
 
 export default function ProfileScreen({ route }) {
@@ -18,9 +19,10 @@ export default function ProfileScreen({ route }) {
         return (
             <React.Fragment>
                 <View style={styles.contact_header}>
-                    {/* Avatar */}
+                    <Avatar rounded source={{ uri: contactData.profile_img || null }} />
                 </View>
-                {/* Card title Card divider */}
+                <Card.Title >{contactData.first_name} {contactData.last_name}</Card.Title>
+                <Card.Divider/>
             </React.Fragment>
         )
     }
@@ -45,7 +47,10 @@ export default function ProfileScreen({ route }) {
     return (
         <ScrollView>
             <View style={styles.main}>
-              {/* Card with contactHeader and contactBody */}
+                <Card>
+                    {contactHeader()}
+                    {contactBody()}
+                </Card>
             </View>
       </ScrollView>
     )

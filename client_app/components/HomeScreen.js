@@ -36,9 +36,14 @@ export default class HomeScreen extends Component {
 
     renderContacts = ({item}) => {
         return(
-            <View>
-              <Text style={styles.listItem}>{item.first_name}</Text>
-            </View>
+            <ListItem bottomDivider onPress={() => this.props.navigation.navigate('Contact', {itemId:item._id})}>
+            <Avatar rounded source={{uri: item.profile_img || null}} />
+            <ListItem.Content>
+              <ListItem.Title>{item.first_name}</ListItem.Title>
+              <ListItem.Subtitle>{item.subtitle}</ListItem.Subtitle>
+            </ListItem.Content>
+            <ListItem.Chevron />
+          </ListItem>
           );
     }
 
@@ -70,20 +75,37 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{marginBottom:20}}>
-                    <TextInput style={styles.searchInput} placeholder="Serach" onChangeText={value => this.setState({searchInput: value})}/>
+              <Header
+                leftComponent={{ icon: 'menu', color: '#fff' }}
+                centerComponent={{ text: 'Contacts', style: { color: '#fff' } }}
+                rightComponent={{ icon: 'home', color: '#fff' }}
+              />
+              <View style={{ flexDirection:"row" }}>
+                <View style={styles.buttonStyle}>
+                  <Button 
+                      type="clear" 
+                      title="Form" 
+                      onPress={() => this.props.navigation.navigate('Form', {userData: this.state.formFields})} />
                 </View>
-                <View>
-                    <Button title="Form" onPress={() => this.props.navigation.navigate('Form')} />
+                <View style={styles.buttonStyle}>
+                  <Button type="clear" title="Sort" onPress={() => this.sortByAlphabeticall()}/>
                 </View>
-                <View>
-                    <Button title="Sort" onPress={() => this.sortByAlphabeticall()}/>
-                </View>
-                <FlatList 
-                    data={this.filterContacts()}
-                    renderItem={this.renderContacts}
-                    keyExtractor={item => item._id.toString()}
-                />
+              </View>
+              <SearchBar
+                  placeholder="Type Here..."
+                  lightTheme={true}
+                  round={true}
+                  onChangeText={value => this.setState({searchItem: value})}
+                  value={this.state.searchItem}
+              />
+              <FlatList 
+                  data={this.filteredData()} 
+                  renderItem={this.renderContacts}  
+                  keyExtractor={item => item._id.toString()}
+                  refreshing={this.state.isLoading}
+                  onRefresh={this.getData}
+              />
+              <StatusBar style="auto" />
             </View>
         )
     }
