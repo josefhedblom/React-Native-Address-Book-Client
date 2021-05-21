@@ -25,6 +25,23 @@ export default function ProfileScreen() {
         )
     }
 
+    function contactBody(){
+        return Object.keys(contactData).map((field, index) => {
+            if(`${field}` != '_id' && `${field}` != 'profile_img' && `${field}` != '__v'){
+                return(
+                    <React.Fragment key={index}>
+                        <ListItem>
+                            <ListItem.Content >
+                              <ListItem.Title>{field}: {contactData[`${field}`]}</ListItem.Title>
+                            </ListItem.Content>
+                        </ListItem>
+                        <Card.Divider/>
+                    </React.Fragment>
+                   )
+            }
+        })
+    }
+
     return (
         <View>
             <Text></Text>
