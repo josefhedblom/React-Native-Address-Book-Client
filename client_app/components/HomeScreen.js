@@ -17,7 +17,9 @@ export default class HomeScreen extends Component {
     }
 
     componentDidMount(){
-        this.getData();
+      this._unsubscribe = this.props.navigation.addListener('focus', () => {
+        this.getData()
+      });
     }
 
     getData = () => {
